@@ -29,7 +29,7 @@ class TwoR(Renderer):
 
 
     def dynamics(self):
-        # give trajectory of x and y 
+        # Given trajectory of x and y 
         x = 200*np.cos(self.i/100) +300
         y = 200*np.sin(self.i/100) +300
         self.x= x-300
@@ -72,6 +72,7 @@ class TwoR(Renderer):
 obj = TwoR()    
 
 for i in range(8000):
+    # Give Trajectory in the dynamics() function. 
     obj.dynamics()
     if i % 1 == 0:
         obj.render(height= 600, pause = 10)

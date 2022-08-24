@@ -34,7 +34,7 @@ class TwoR(Renderer):
         self.y_initial=[self.y_origin+50]
 
         # spring Constant
-        self.k=5
+        self.k=2
 
 
     def getInfo(self):
@@ -120,7 +120,7 @@ class TwoR(Renderer):
                 dq2=(q2_3-q2_2)/dt32
 
                 ddq1= (2*(dq1-dq1_prev))/(t-t1)
-                ddq2=(2*(dq2-dq2_prev))/(t-t1)
+                ddq2=(2*(dq2-dq2_prev))/(t-t1) 
 
 
                 self.tau_1=  (m1*l1**2 + m2*(l1**2+2*l1*l2*cos(q2_3)+l2**2))*ddq1 + m2*(l1*l2*cos(q2_3)+l2**2)*ddq2 -m2*l1*l2*sin(q2_3)*(2*dq1*dq2+ddq2**2) + (m1+m2)*l1*g*cos(q1_3) + m2*g*l2*cos(q1_3+q2_3)
