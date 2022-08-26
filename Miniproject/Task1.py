@@ -29,12 +29,14 @@ class TwoR(Renderer):
 
 
     def dynamics(self):
-        # Given trajectory of x and y 
+        # Given trajectory of x and y  with self.i as the iterator
         x = 200*np.cos(self.i/100) +300
         y = 200*np.sin(self.i/100) +300
         self.x= x-300
         self.y= y-300
 
+
+        # Range or workspace with singularities filtered out
         if (self.x**2+self.y**2) > (self.l1+self.l2)**2 or self.x==0 or self.y==0:
             raise Exception("Just Be in The LIMIT :)")
 
@@ -72,8 +74,8 @@ class TwoR(Renderer):
 obj = TwoR()    
 
 for i in range(8000):
-    # Give Trajectory in the dynamics() function. 
-    obj.dynamics()
+    obj.dynamics() #give trajectory in this function with i as the iterator
+    print("Press 'q' to exit")
     if i % 1 == 0:
         obj.render(height= 600, pause = 10)
 

@@ -30,8 +30,8 @@ class TwoR(Renderer):
         info = {
             'x2' : round(self.x, 4),
             'y2' : round(self.y, 4),
-            'q1 (deg)' : round(self.q1*57.2958, 4),
-            'q2 (deg)' : round(self.q2*57.2958, 4),
+            'q1 (deg)' : round(-self.q1*57.2958, 4),
+            'q2 (deg)' : round(-self.q2*57.2958, 4),
             'Tau_1 (N-m)'    : round(self.tau_1),
             'Tau_2(N-m)'    : round(self.tau_2)
         }
@@ -39,7 +39,7 @@ class TwoR(Renderer):
 
 
     def dynamics(self):
-        # give trajectory of x and y 
+        # give trajectory of x and y with self.i as the iterator
         x = 150*np.cos(self.i/100) +300
         y = 200*np.sin(self.i/100) +300
         self.x= x-300
@@ -125,7 +125,8 @@ class TwoR(Renderer):
 obj = TwoR()    
 
 for i in range(5000):
-    obj.dynamics()
+    obj.dynamics()  #give trajectory in this function with i as the iterator
+    print("Press 'q' to exit")
     if i % 1 == 0:
         obj.render(height= 600, pause = 10)
 

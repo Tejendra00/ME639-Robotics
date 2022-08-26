@@ -24,8 +24,13 @@ class TwoR(Renderer):
         self.g= 9.8
         self.tau_1=0
         self.tau_2=0
-        self.xlinecenter=400
-        self.ylinecenter=100
+        # wall Coordinates
+        self.wall_x1= 600
+        self.wall_x2= 200
+        self.wall_y1=200
+        self.wall_y2=0
+        self.xlinecenter=int((self.wall_x1+self.wall_x2)/2)
+        self.ylinecenter=int((self.wall_y1+self.wall_y2)/2)
         self.Fx=0
         self.Fy=0
         self.tau_ext_1 =0
@@ -64,11 +69,8 @@ class TwoR(Renderer):
 
 
 
-        # x = 150*np.cos(self.i/100) +300
-        # y = 200*np.sin(self.i/100) +300
         self.x= x-300
         self.y= y-300
-        print(self.x**2+self.y**2)
 
         if (self.x**2+self.y**2) >= (self.l1+self.l2)**2:
             raise Exception("Just Be in The LIMIT :)")
@@ -144,9 +146,9 @@ class TwoR(Renderer):
         cv2.circle(image, (ln1f[0]+int(self.l2*np.cos(self.q2)),ln1f[1]+int(self.l2*np.sin(self.q2))), 7, (0, 0, 255), -1)
         
         #Wall
-        cv2.line(image, (200,0), (600,200), (0, 0, 0), 5)
+        cv2.line(image, (self.wall_x1,self.wall_y1), (self.wall_x2,self.wall_y2), (0, 0, 0), 5)
 
-        cv2.circle(image,(400,100), 5, (0, 150, 255), -1)
+        cv2.circle(image,(self.xlinecenter,self.ylinecenter), 5, (0, 150, 255), -1)
 
 
         for i in range(len(self.corr)):
@@ -163,6 +165,7 @@ obj = TwoR()
 
 for i in range(10000):
     obj.dynamics()
+    print("Press 'q' to exit")
     if i % 1 == 0:
         obj.render(height= 600, pause = 10)
 
