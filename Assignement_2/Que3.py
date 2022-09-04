@@ -33,10 +33,10 @@ def Scara_type(l1,l2,d,theta_1,theta_2):
     return print(P_0)
 
 #Enter the arguments below 
-theta_1=60      # angle in degree
-theta_2=45     # angle isn degree
-l1=2             # length of arm 1
-l2=3            # length of arm 2
-d=0.5           # instantaneous distance from prismatic joint
+theta_1=80     # angle in degree
+theta_2=50     # angle isn degree
+l1=4             # length of arm 1
+l2=5            # length of arm 2
+d=2         # instantaneous distance from prismatic joint
 
 Scara_type(l1,l2,d,theta_1,theta_2)
